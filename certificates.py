@@ -163,7 +163,7 @@ def generate_svg(name, date_str, out_path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--name", required=True)
+    parser.add_argument("--name", required=False, default="Sample Student")
     parser.add_argument("--date", default=None)
     parser.add_argument("--output", default=None)
 
