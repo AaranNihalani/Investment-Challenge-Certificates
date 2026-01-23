@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 def data_uri_for_image(filename):
-    path = os.path.join(os.getcwd(), filename)
+    path = os.path.join(os.getcwd(), "Assets", filename)
     try:
         with open(path, "rb") as f:
             encoded = base64.b64encode(f.read()).decode("ascii")
@@ -18,11 +18,12 @@ def generate_svg(name, date_str, out_path):
     w = 1600
     h = 1100
 
-    title = "Eton College Investment Challenge 2026"
+    title = "ECHCIC Investment Award 2026"
     subtitle = "Finalist Certificate"
 
     eton_src = data_uri_for_image("etonlogo.png")
     club_src = data_uri_for_image("ECHCIC.png")
+    fm_src = data_uri_for_image("fminstitute_logo.jpeg")
 
     svg = f"""
 <svg xmlns="http://www.w3.org/2000/svg"
@@ -59,8 +60,23 @@ def generate_svg(name, date_str, out_path):
 <rect x="120" y="120" width="{w - 240}" height="{h - 240}" rx="18" fill="url(#guilloche)" opacity="0.15"/>
 
 <g>
-    <image xlink:href="{eton_src}" x="{w/2 - 340}" y="96" width="310" height="310" preserveAspectRatio="xMidYMid meet"/>
-    <image xlink:href="{club_src}" x="{w/2 + 140}" y="180" width="190" height="190" preserveAspectRatio="xMidYMid meet"/>
+    <!-- Eton Logo (Left) -->
+    <image xlink:href="{eton_src}"
+           x="200" y="100"
+           width="300" height="300"
+           preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- FM Institute Logo (Bottom Right) -->
+    <image xlink:href="{fm_src}"
+           x="{w - 300}" y="{h - 300}"
+           width="180" height="180"
+           preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Club Logo (Right) -->
+    <image xlink:href="{club_src}"
+           x="{w - 400}" y="190"
+           width="180" height="180"
+           preserveAspectRatio="xMidYMid meet"/>
 </g>
 
 <g>
@@ -80,7 +96,7 @@ def generate_svg(name, date_str, out_path):
         {name}
     </text>
     <text x="{w/2}" y="700" font-family="Georgia, 'Times New Roman', serif" font-size="26" text-anchor="middle" fill="#3b5d4f">
-        was a finalist in the Eton College Investment Challenge 2026
+        was a finalist in the ECHCIC Investment Award 2026
     </text>
 </g>
 

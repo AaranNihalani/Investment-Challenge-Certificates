@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 def data_uri_for_image(filename):
-    path = os.path.join(os.getcwd(), filename)
+    path = os.path.join(os.getcwd(), "Assets", filename)
     try:
         with open(path, "rb") as f:
             encoded = base64.b64encode(f.read()).decode("ascii")
@@ -19,11 +19,12 @@ def generate_svg(name, date_str, out_path):
     w = 1600
     h = 1100
 
-    title = "Eton College Investment Challenge 2026"
+    title = "ECHCIC Investment Award 2026"
     subtitle = "Certificate of Participation"
 
     eton_src = data_uri_for_image("etonlogo.png")
     club_src = data_uri_for_image("ECHCIC.png")
+    fm_src = data_uri_for_image("fminstitute_logo.jpeg")
 
     svg = f"""
 <svg xmlns="http://www.w3.org/2000/svg"
@@ -72,13 +73,21 @@ def generate_svg(name, date_str, out_path):
 
 <!-- Logos -->
 <g>
+    <!-- Eton Logo (Left) -->
     <image xlink:href="{eton_src}"
-           x="{w/2 - 320}" y="100"
+           x="200" y="100"
            width="300" height="300"
            preserveAspectRatio="xMidYMid meet"/>
 
+    <!-- FM Institute Logo (Bottom Right) -->
+    <image xlink:href="{fm_src}"
+           x="{w - 300}" y="{h - 300}"
+           width="180" height="180"
+           preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Club Logo (Right) -->
     <image xlink:href="{club_src}"
-           x="{w/2 + 140}" y="190"
+           x="{w - 400}" y="190"
            width="180" height="180"
            preserveAspectRatio="xMidYMid meet"/>
 </g>
@@ -125,7 +134,7 @@ def generate_svg(name, date_str, out_path):
           font-size="26"
           text-anchor="middle"
           fill="#4a4337">
-        has participated in the Eton College Investment Challenge 2026
+        has participated in the ECHCIC Investment Award 2026
     </text>
 </g>
 
