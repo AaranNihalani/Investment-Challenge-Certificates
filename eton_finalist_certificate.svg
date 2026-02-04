@@ -85,7 +85,11 @@
         Date
     </text>
     <text x="800.0" y="875" font-family="Georgia, 'Times New Roman', serif" font-size="24" text-anchor="middle" fill="#2b2b2b">
-        27 January 2026
+        04 February 2026
+    </text>
+
+    <text x="800.0" y="960" font-family="Georgia, 'Times New Roman', serif" font-size="30" text-anchor="middle" fill="#2e604d">
+        Generously sponsored by Henry Gundlach
     </text>
 </g>
 

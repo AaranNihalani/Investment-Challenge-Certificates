@@ -166,6 +166,14 @@ def generate_svg(name, date_str, out_path):
           fill="#2b2b2b">
         {date_str}
     </text>
+
+    <text x="{w/2}" y="{h - 140}"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="30"
+          text-anchor="middle"
+          fill="#6b5f46">
+        Generously sponsored by Henry Gundlach
+    </text>
 </g>
 
 </svg>
