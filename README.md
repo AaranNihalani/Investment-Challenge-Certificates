@@ -50,7 +50,7 @@ python finalists.py --name "Bob Jones" --output "finalist_bob.svg"
 The scripts require the following image assets in the `Assets` folder:
 - `etonlogo.png`
 - `ECHCIC.png`
-- `fminstitute_logo.jpeg`
+- `fminstitute_logo.png`
 
 ## Output
 Each script generates an `.svg` file.

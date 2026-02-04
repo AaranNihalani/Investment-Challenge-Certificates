@@ -24,7 +24,7 @@ def generate_svg(name, date_str, out_path):
 
     eton_src = data_uri_for_image("etonlogo.png")
     club_src = data_uri_for_image("ECHCIC.png")
-    fm_src = data_uri_for_image("fminstitute_logo.jpeg")
+    fm_src = data_uri_for_image("fminstitute_logo.png")
     koyfin_src = data_uri_for_image("koyfin_logo.png")
 
     svg = f"""
@@ -76,7 +76,7 @@ def generate_svg(name, date_str, out_path):
 <g>
     <!-- Eton Logo (Left) -->
     <image xlink:href="{eton_src}"
-           x="200" y="100"
+           x="100" y="100"
            width="300" height="300"
            preserveAspectRatio="xMidYMid meet"/>
 
@@ -94,7 +94,7 @@ def generate_svg(name, date_str, out_path):
 
     <!-- Club Logo (Right) -->
     <image xlink:href="{club_src}"
-           x="{w - 400}" y="190"
+           x="{w - 310}" y="120"
            width="180" height="180"
            preserveAspectRatio="xMidYMid meet"/>
 </g>
