@@ -1,6 +1,5 @@
-import argparse
+import csv
 import base64
-import math
 import os
 from datetime import datetime
 
@@ -186,18 +185,30 @@ def generate_svg(name, date_str, out_path):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--name", required=False, default="Sample Student")
-    parser.add_argument("--date", default=None)
-    parser.add_argument("--output", default=None)
+    csv_filename = "participants.csv"
+    output_dir = "participants"
+    date_str = datetime.today().strftime("%d %B %Y")
 
-    args = parser.parse_args()
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    date_str = args.date or datetime.today().strftime("%d %B %Y")
-    out = args.output or os.path.join(os.getcwd(), "eton_certificate.svg")
+    # Try to read CSV
+    if not os.path.exists(csv_filename):
+        print(f"Error: {csv_filename} not found.")
+        return
 
-    generate_svg(args.name, date_str, out)
-
+    with open(csv_filename, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if not row:
+                continue
+            name = row[0].strip()
+            # Construct output filename: participants/Name_certificate.svg
+            # Sanitize name for filename just in case
+            safe_name = "".join([c for c in name if c.isalnum() or c in (' ', '-', '_')]).strip()
+            out_path = os.path.join(output_dir, f"{safe_name}_certificate.svg")
+            
+            generate_svg(name, date_str, out_path)
 
 if __name__ == "__main__":
     main()

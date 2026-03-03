@@ -5,42 +5,26 @@ This project contains Python scripts to generate SVG certificates for the Eton C
 ## Scripts
 
 ### 1. Participation Certificate (`certificates.py`)
-Generates the standard participation certificate with a gold/yellow color scheme.
+Generates standard participation certificates with a gold/yellow color scheme.
 
 **Usage:**
-```bash
-python certificates.py --name "Student Name"
-```
-*Note: If no name is provided, it defaults to "Sample Student".*
-
-**Options:**
-- `--name`: Name of the participant (Optional, defaults to "Sample Student").
-- `--date`: Date string to display (Optional, defaults to today's date).
-- `--output`: Output filename (Optional, defaults to `eton_certificate.svg`).
-
-**Example:**
-```bash
-python certificates.py --name "Alice Smith" --date "22 January 2026"
-```
+1. Ensure `participants.csv` exists in the same directory. The CSV should contain names in the first column (no header required).
+2. Run the script:
+   ```bash
+   python certificates.py
+   ```
+3. Certificates will be generated in the `participants/` folder as `Name_certificate.svg`.
 
 ### 2. Finalist Certificate (`finalists.py`)
-Generates the finalist certificate with an emerald/green color scheme.
+Generates finalist certificates with an emerald/green color scheme.
 
 **Usage:**
-```bash
-python finalists.py --name "Student Name"
-```
-*Note: If no name is provided, it defaults to "Sample Student".*
-
-**Options:**
-- `--name`: Name of the finalist (Required).
-- `--date`: Date string to display (Optional, defaults to today's date).
-- `--output`: Output filename (Optional, defaults to `eton_finalist_certificate.svg`).
-
-**Example:**
-```bash
-python finalists.py --name "Bob Jones" --output "finalist_bob.svg"
-```
+1. Ensure `finalists.csv` exists in the same directory. The CSV should contain names in the first column (no header required).
+2. Run the script:
+   ```bash
+   python finalists.py
+   ```
+3. Certificates will be generated in the `finalists/` folder as `Name_certificate.svg`.
 
 ## Requirements
 - Python 3.x
@@ -51,6 +35,7 @@ The scripts require the following image assets in the `Assets` folder:
 - `etonlogo.png`
 - `ECHCIC.png`
 - `fminstitute_logo.png`
+- `koyfin_logo.png`
 
 ## Output
-Each script generates an `.svg` file.
+Each script generates `.svg` files in their respective folders (`participants/` and `finalists/`).
